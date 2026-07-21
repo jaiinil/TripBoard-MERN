@@ -1,6 +1,6 @@
 # TripBoard
 
-A MERN stack trip-planning app — built as hands-on practice for a Senior Frontend Engineer take-home test (MERN, feature-building + bug-fix).
+A MERN stack trip-planning app.
 
 ## Tech Stack
 
