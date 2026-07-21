@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors  = require('cors');
@@ -12,6 +11,8 @@ app.use(express.json());
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
+
+app.use('/api/trips', require('./routes/tripRoutes'));
 
 
 const PORT = process.env.PORT || 5000;
