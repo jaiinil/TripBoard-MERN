@@ -26,7 +26,9 @@ function TripForm({onTripCreated}) {
                 onTripCreated();
 
             })
-    }
+    };
+
+    
 
 
     return (
