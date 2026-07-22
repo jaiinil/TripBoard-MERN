@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import TripList from './components/TripList';
-import TripForm from './components/TripForm';
+import { useState, useEffect } from "react";
+import TripList from "./components/TripList";
+import TripForm from "./components/TripForm";
 
 function App() {
   const [trips, setTrips] = useState([]);
@@ -9,7 +9,7 @@ function App() {
 
   const fetchTrips = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/trips')
+    fetch("http://localhost:5000/api/trips")
       .then((res) => res.json())
       .then((data) => {
         setTrips(data);
@@ -21,6 +21,12 @@ function App() {
       });
   };
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/api/trips/${id}`, { method: "DELETE" }).then(
+      () => fetchTrips(),
+    );
+  };
+
   useEffect(() => {
     fetchTrips();
   }, []);
@@ -28,10 +34,10 @@ function App() {
   return (
     <div>
       <h1>TripBoard</h1>
-      <TripForm onTripCreated={fetchTrips} />
+      <TripForm onTripCreated={fetchTrips}  />
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      {!loading && !error && <TripList trips={trips} />}
+      {!loading && !error && <TripList trips={trips} onDelete={handleDelete} />}
     </div>
   );
 }
